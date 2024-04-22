@@ -1,0 +1,1 @@
+pour lancer le serveur il faut ouvrir un terminal dans IDE et ecrire npm start
