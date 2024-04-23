@@ -1,0 +1,2 @@
+pour lancer le serveur il faut ouvrir un terminal dans IDE et ecrire npm start
+crée un fichier .env avec une variable appeller SECRET_KEY="fbbfdbsdfbjkdbgkjsbkqbkjfdl" taper n'importe quoi dans les guillemets
