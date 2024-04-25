@@ -46,7 +46,7 @@ if(!email||!firstname||!lastname||!hashedPassword){
     const [rows] = await pool.execute(sql, values)
 
     
-if(rows[0]===0){
+if(rows.length === 0){
     res.status(401).json({ error: 'utilisateur existe pas' })
     return
 }
@@ -54,6 +54,8 @@ if(rows[0]===0){
 const isValidPassword = bcrypt.compareSync(req.body.password, rows[0].password)
 if (!isValidPassword) {
     res.status(401).json({ error: 'le mot de passe est pas valide' })
+
+    return
 } else {
     const token = jwt.sign(
         {
@@ -67,8 +69,8 @@ if (!isValidPassword) {
             process.env.SECRET_KEY,
             { expiresIn: '20d'}
     )
-console.log(rows[0])
-console.log(req.body.password)
+
+
  res.status(200).json({ jwt: token})
     }
 

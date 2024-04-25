@@ -1,10 +1,21 @@
 const { pool } = require("../Connexion/db");
-const bcrypt = require('bcrypt')
-const jwt= require('jsonwebtoken')
+const jwt= require('jsonwebtoken');
+const { extractToken } = require("../utils/token");
 require('dotenv').config()
 
 // crée un produit 
 const ctrlCreateArticle = async (req, res) => {
+  const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
+
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
     try {
         const{title,description,category,quantity,quantityMax,prix}= req.body
        let data=[]
@@ -23,6 +34,9 @@ if(!title||!description||!category||!quantity|| !quantityMax||!prix){
     } catch (err) {
       console.log(err.stack);
     }
+    }
+
+  })
   };
 
   //afficher tout les articles
@@ -36,6 +50,17 @@ try{
 }
 // update un article par id
 const ctrlUpdate= async (req,res)=>{
+  const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
+
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
     try{
 
         const id= req.params.id
@@ -48,10 +73,23 @@ const ctrlUpdate= async (req,res)=>{
    } catch (err) {
         console.log(err.stack);
       }
+    }
+  })
 }
 
 //supprimer un articles par son id 
 const ctrlDelete= async (req,res)=>{
+  const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
+
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
     try{
         const id= req.params.id
         const [rows, fields] = await pool.execute(`DELETE FROM articles WHERE id="${id}" `)
@@ -59,6 +97,8 @@ const ctrlDelete= async (req,res)=>{
     } catch (err) {
       console.log(err.stack);
     }
+  }
+})
 }
 
   
