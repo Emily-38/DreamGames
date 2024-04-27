@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div class="container mx-auto w-full max-w-xs">
+            <div class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <p class="text-center text-gray-700 text-sm font-bold mb-2">Ajouter un Article</p>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                 Titre
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="">
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                 Image
+                </label>
+                <input class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="file" placeholder="">
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                  Description
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="">
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+                  Categorie
+                </label>
+                <select class=" bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="category" type="text" placeholder="">
+                    <option value="console">console</option>
+                    <option value="Accessoires">Accessoires</option>
+                    <option value="jeux_video">Jeux video</option>
+                </select>
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
+                  Quantités
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="quantity" type="number" placeholder="">
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="quantityMax">
+                  Quantités maximum
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="quantityMax" type="number" placeholder="">
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+                  Prix
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="prix" type="number" placeholder="">
+              </div>
+              <div class="flex items-center justify-center">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "  id="ajouter"  >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+          </div>
+    </main>
+    
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/27b15f5b77.js" crossorigin="anonymous"></script>
+    <script src="create.js"></script>
+</html>

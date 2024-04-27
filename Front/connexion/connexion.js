@@ -17,9 +17,18 @@ async function connexion() {
 
     let apiRequest = fetch('http://localhost:3444/login', request)
     let response = await apiRequest
-    if (response.status === 200) {
-        const data = await response.json()
-        window.localStorage.setItem('jwt', data.jwt)
-        window.location.href = '../Home/Home.html'
+     const data = await response.json()
+    
+        if (response.status === 200) {
+            let jwt = data.jwt
+            let role = data.user
+    
+            window.localStorage.setItem('jwt', jwt)
+             
+            if (role === 'admin') {
+                window.location.href = '../admin/admin.html'
+            } else {
+                window.location.href = '../Home/Home.html'
+            }
         }
 }

@@ -33,7 +33,7 @@ if(!email||!firstname||!lastname||!hashedPassword){
     }
   };
 
-  //login avec compare password hash et creation de jwt
+  //login avec compare password hash et creation de jwt renvoi le jwt et le role
   const login = async (req, res) => {
     if (!req.email || !req.body.password) {
         res.status(400).json({ error: 'il manque des champs' })
@@ -71,7 +71,7 @@ if (!isValidPassword) {
     )
 
 
- res.status(200).json({ jwt: token})
+ res.status(200).json({ jwt: token , user:rows[0].role})
     }
 
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <header class="flex flex-row justify-between items-center m-2">
+       <a href="./admin.html"> <img src="../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12"></a>
+        <div>
+            <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
+            <a href="./create/create.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping m-2"></i>Crée un produit</a>
+        </div>
+    </header>
+    <main>
+        <div class="bg-gray-100 m-2">
+            <p class="font-bold text-center">Recherche par categories</p>
+        <div class="flex flex-row justify-around">
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Consoles()">
+            
+                <img src="../media/consoles.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
+                <p class="font-bold">Consoles</p>
+            
+            </button>
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Accessoire()" >
+                <img src="../media/manettes.avif" alt="consoles" class="w-32 h-40 container mx-auto m-2">
+                <p class="font-bold">Accessoires</p>
+            </button>
+            
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="JeuxVideo()" >
+                <img src="../media/jeu.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
+                <p class="font-bold">Jeux video</p>
+            </button>
+            </a>
+        </div>
+        </div>
+        <div class="bg-gray-100 m-2">
+            <p class="font-bold text-center">Tout nos articles</p>
+        <div class="allArticle flex flex-row">
+
+        </div>
+    </div>
+    </main>
+    
+</body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/27b15f5b77.js" crossorigin="anonymous"></script>
+    <script src="admin.js"></script>
+</html>

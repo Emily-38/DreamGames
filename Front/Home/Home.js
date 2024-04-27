@@ -1,6 +1,14 @@
+
+//securité de page ne peut pas y acceder si le jwt n'est pas bon renvoie sur login
+let jwt = window.localStorage.getItem('jwt')
+if (!jwt || jwt === 'undefined' || jwt.length < 20) {
+    window.location.href = '../connexion/connexion.html'
+}
+
+
 let card= document.querySelector('.allArticle');
 
-
+//fonction qui affiche les articles qui sont disponible uniquement
 async function getAllArticles() {
     let apiCall = await fetch('http://localhost:3444/Article')
     let response = await apiCall.json()
@@ -26,6 +34,7 @@ async function getAllArticles() {
 getAllArticles()
 
 
+//
 async function AddArticle(id){
     let apiCall = await fetch(`http://localhost:3444/addLocation/${id}`)
     let response = await apiCall.json()
