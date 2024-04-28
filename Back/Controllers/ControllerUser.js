@@ -1,6 +1,7 @@
 const { pool } = require("../Connexion/db");
 const bcrypt = require('bcrypt')
-const jwt= require('jsonwebtoken')
+const jwt= require('jsonwebtoken');
+const { extractToken } = require("../utils/token");
 require('dotenv').config()
 
 
@@ -8,19 +9,19 @@ require('dotenv').config()
 const ctrlCreateUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        const{firstname,lastname}= req.body
+        const{firstname,lastname,address}= req.body
         const email= req.email
        let data=[]
        
-if(!email||!firstname||!lastname||!hashedPassword){
+if(!email||!firstname||!lastname||!hashedPassword||!address){
     res.json({message: "les champs ne sont pas remplis"})
 }else{
-     data.push(`"${email}","${firstname}","${lastname}","${hashedPassword}"`);
+     data.push(`"${email}","${firstname}","${lastname}","${hashedPassword}","${address}"`);
 
-    console.log(data)
+    
 
 
-        const sql = `INSERT INTO users (email,first_name, last_name, password)
+        const sql = `INSERT INTO users (email,first_name, last_name, password,address)
                     VALUES (${data})`;
 
                     
@@ -76,4 +77,25 @@ if (!isValidPassword) {
 
 }
 
-  module.exports={ctrlCreateUser, login}
+const profile = async (req, res)=>{
+    const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
+
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
+
+    const sql =`SELECT * FROM users WHERE id=${authData.id}`
+    
+    const [rows] = await pool.execute(sql)
+    res.json(rows);
+    }
+})
+}
+
+  module.exports={ctrlCreateUser, login, profile}

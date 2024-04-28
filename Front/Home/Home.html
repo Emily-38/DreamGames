@@ -9,33 +9,40 @@
     <header class="flex flex-row justify-between items-center m-2">
         <img src="../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12">
         <div>
-            <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
-            <a href="" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping m-2"></i>Panier</a>
+            <a href="./Profile/Profile.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
+            <button onclick="panier()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping mr-2"></i>Panier</button>
+            <button onclick="logOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>
         </div>
     </header>
     <main>
-        <div class="bg-gray-100 m-2">
+        <div class="modale hidden bg-white">
+
+        </div>
+        <div class="article bg-gray-100 m-2">
             <p class="font-bold text-center">Recherche par categories</p>
         <div class="flex flex-row justify-around">
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Consoles()">
             
-            <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" >
                 <img src="../media/consoles.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
                 <p class="font-bold">Consoles</p>
-            </div>
-            <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" >
-                <img src="../media/manettes.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
+            
+            </button>
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Accessoire()" >
+                <img src="../media/manettes.avif" alt="consoles" class="w-32 h-40 container mx-auto m-2">
                 <p class="font-bold">Accessoires</p>
-            </div>
-            <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" >
+            </button>
+            
+            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="JeuxVideo()" >
                 <img src="../media/jeu.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
                 <p class="font-bold">Jeux video</p>
-            </div>
+            </button>
+            </a>
         </div>
         </div>
-        <div class="bg-gray-100 m-2">
+        <div class="bg-gray-100 m-2 ">
             <p class="font-bold text-center">Tout nos articles</p>
-        <div class="allArticle flex flex-row">
-
+        <div class="allArticle flex flex-row ">
+            
         </div>
     </div>
     </main>

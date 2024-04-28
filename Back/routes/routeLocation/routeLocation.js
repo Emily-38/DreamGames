@@ -1,9 +1,10 @@
 const express = require("express");
-const { ctrlAddLocation, ctrlReadArticleByIdUser, ctrlUpdate } = require("../../Controllers/controllersLocation");
+const { ctrlAddLocation, ctrlReadArticleByIdUser, ctrlLocUpdate, ctrlLocDelete } = require("../../Controllers/controllersLocation");
 
 const router = express.Router();
 router.post('/addLocation/:id',ctrlAddLocation)
 router.get('/afficherLocation',ctrlReadArticleByIdUser)
-router.patch('/validerLocation',ctrlUpdate)
+router.patch('/validerLocation/:id',ctrlLocUpdate)
+router.delete('/supprLoc',ctrlLocDelete)
 
 module.exports=router

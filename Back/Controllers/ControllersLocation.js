@@ -68,9 +68,9 @@ const ctrlReadArticleByIdUser = async (req, res) => {
     )
  }
 
- //update article lors de la validation 
+ //update tout les articles du user lors de la validation 
 
- const ctrlUpdate= async (req,res)=>{
+ const ctrlLocUpdate= async (req,res)=>{
     const token = await extractToken(req)
     jwt.verify( 
       token,
@@ -83,7 +83,7 @@ const ctrlReadArticleByIdUser = async (req, res) => {
           return
       } else {
       try{
-        
+        const id= req.params.id
           const{date_start,date_end }= req.body
           const sql =`UPDATE location
           JOIN articles ON articles.id = location.article_id
@@ -91,7 +91,7 @@ const ctrlReadArticleByIdUser = async (req, res) => {
               location.date_end = ?,
               location.status = 'en cours',
               articles.quantity = articles.quantity - 1
-          WHERE location.user_id = ${authData.id}; `
+          WHERE location.id=${id}; `
           const values = [date_start,date_end];
           const [rows] = await pool.execute(sql, values);
           
@@ -103,5 +103,29 @@ const ctrlReadArticleByIdUser = async (req, res) => {
       }
     })
   }
+
+  //supprimer une loc
+  const ctrlLocDelete= async (req,res)=>{
+    const token = await extractToken(req)
+    jwt.verify( 
+      token,
+    process.env.SECRET_KEY,
+    async (err, authData) => {
+        if (err) {
   
-    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlUpdate}
+          console.log(err)
+          res.status(401).json({ err: 'Unauthorized' })
+          return
+      } else {
+      try{
+          const id= req.params.id
+          const [rows, fields] = await pool.execute(`DELETE FROM location WHERE id="${id}" `)
+          res.json(rows);
+      } catch (err) {
+        console.log(err.stack);
+      }
+    }
+  })
+  }
+  
+    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlLocUpdate, ctrlLocDelete}

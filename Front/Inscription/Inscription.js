@@ -4,12 +4,14 @@ async function CreatUser(){
     const password= document.querySelector('#password').value
     const firstname= document.querySelector('#Prenom').value
     const lastname= document.querySelector('#Nom').value
+    const address=document.querySelector('#address').value
 
     let user ={
         email:email,
         password:password,
         firstname: firstname,
-        lastname:lastname
+        lastname:lastname,
+        address:address
     }
     let request = {
         method: 'POST',

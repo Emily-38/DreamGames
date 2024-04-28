@@ -10,10 +10,11 @@ let card= document.querySelector('.allArticle');
 async function getAllArticles() {
     let apiCall = await fetch('http://localhost:3444/Article')
     let response = await apiCall.json()
+   
     response.forEach(article => {
        
         card.innerHTML +=`
-        <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+        <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2 ">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -26,8 +27,8 @@ async function getAllArticles() {
         </div>
         <button class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="ModifierArticle('${article.id}')">Modifier<button>
         <button class="bg-red-500 m-2 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="DeleteArticle('${article.id}')">Supprimer<button>
-        <div>`
-        
+        <div>
+        </div>`
     });
 }
 getAllArticles()
@@ -114,7 +115,7 @@ async function JeuxVideo(){
     let response = await apiCall.json()
     card.innerHTML=""
     response.forEach(article => {
-        if(article.category==="JeuxVideo"){
+        if(article.category==="jeux_video"){
         card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
         
         <p class="font-bold">${article.title}</p>
@@ -131,4 +132,8 @@ async function JeuxVideo(){
         <div>`
         }
     });
+}
+async function logOut(){
+    localStorage.clear()
+    window.location.href="../Acceuil/acceuil.html"
 }
