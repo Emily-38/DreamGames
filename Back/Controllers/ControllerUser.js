@@ -76,7 +76,7 @@ if (!isValidPassword) {
     }
 
 }
-
+//affiche les user selon leurs ID
 const profile = async (req, res)=>{
     const token = await extractToken(req)
   jwt.verify( 
@@ -97,5 +97,26 @@ const profile = async (req, res)=>{
     }
 })
 }
+//affiche tout les user
+const AllUser = async (req, res)=>{
+    const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
 
-  module.exports={ctrlCreateUser, login, profile}
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
+
+    const sql =`SELECT * FROM users`
+    
+    const [rows] = await pool.execute(sql)
+    res.json(rows);
+    }
+})
+}
+
+  module.exports={ctrlCreateUser, login, profile, AllUser}

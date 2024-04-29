@@ -62,8 +62,8 @@ async function AddArticle(id){
         if(loc.status ==="a valider"){
       modale.innerHTML+=`<div class="bg-gray-100 m-2"><p>${loc.title}</p><p>${loc.category}</p>
       <p>${loc.prix}€</p></div>
-      <button>Valider</button>
-      <button>Supprimer</button>`
+      <button class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="valider('${loc.id}')">Valider</button>
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="deleteLoc(${loc.id})">Supprimer</button>`
     }  
     });
     alert('ajouter au panier')
@@ -75,6 +75,23 @@ async function panier(){
     const article=document.querySelector('.article')
     article.classList.toggle('hidden')
     modale.classList.toggle('hidden')
+}
+async function valider(id){
+    localStorage.setItem('article',id)
+        window.location.href="./valider/valider.html"
+ }
+ async function deleteLoc(id){
+    let request1 = {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=utf-8',
+          Authorization: `Bearer ${jwt}`,
+      },
+    }
+    let deleteLocation = await fetch(`http://localhost:3444/supprLoc/${id}`, request1)
+    let responsedelete = await deleteLocation.json()
+    
+     window.location.reload() 
 }
 async function Consoles() {
     let apiCall = await fetch('http://localhost:3444/Article')

@@ -56,10 +56,7 @@ const ctrlReadArticleByIdUser = async (req, res) => {
 
         const [rows, fields] = await pool.execute(`SELECT * FROM articles JOIN location ON location.article_id=articles.id WHERE location.user_id=${authData.id} `)
         res.json(rows);
-        // if(rows.quantity === 0){
-        //     const [result] = await pool.execute(`UPDATE articles SET disponibilité = 0 WHERE id=${rows.id}`)
-        //     console.log(result)
-        // }
+        
     } catch (err) {
       console.log(err.stack);
     }
@@ -127,5 +124,58 @@ const ctrlReadArticleByIdUser = async (req, res) => {
     }
   })
   }
+//remet l'article en stock 
+  const ctrlLocAddArticle= async (req,res)=>{
+    const token = await extractToken(req)
+    jwt.verify( 
+      token,
+    process.env.SECRET_KEY,
+    async (err, authData) => {
+        if (err) {
   
-    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlLocUpdate, ctrlLocDelete}
+          console.log(err)
+          res.status(401).json({ err: 'Unauthorized' })
+          return
+      } else {
+      try{
+          const id= req.params.id
+          const [rows, fields] = await pool.execute(`UPDATE location
+          JOIN articles ON articles.id = location.article_id
+          SET  articles.quantity = articles.quantity +1
+          WHERE location.id=${id};   `)
+          res.json(rows);
+          console.log(rows)
+      } catch (err) {
+        console.log(err.stack);
+      }
+    }
+  })
+  }
+
+  const ctrlReadAllLoc = async (req, res) => {
+    const token = await extractToken(req)
+    jwt.verify( 
+      token,
+    process.env.SECRET_KEY,
+    async (err, authData) => {
+        if (err) {
+  
+          console.log(err)
+          res.status(401).json({ err: 'Unauthorized' })
+          return
+      } else {
+    try{
+       
+
+        const [rows, fields] = await pool.execute(`SELECT *, location.id AS location_id FROM location JOIN articles ON articles.id=location.article_id JOIN users ON users.id=location.user_id; `)
+        res.json(rows);
+       
+    } catch (err) {
+      console.log(err.stack);
+    }
+    }
+    }
+    )
+ }
+  
+    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlLocUpdate, ctrlLocDelete,ctrlLocAddArticle, ctrlReadAllLoc}

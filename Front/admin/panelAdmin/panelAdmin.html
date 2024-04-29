@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel admin</title>
+</head>
+<body>
+    <header class="flex flex-row justify-between items-center m-2">
+        <a href="../admin.html"> <img src="../../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12"></a>
+         <div>
+             <a href="../admin.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Home</a>
+             <a href="./create/create.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping m-2"></i>Crée un produit</a>
+             <button onclick="logOut()" class="bg-red-500 m-2 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>
+         </div>
+     </header>
+     <main>
+        <p class="text-center font-bold">Bienvenue sur le panel admin</p>
+        <div class="flex flex-row flex-wrap"> 
+            <button onclick="allUser()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">tout les users</button> 
+            <button onclick="AllLoc()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">toutes les location</button>
+            <button onclick="AllArticle()"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">tout les article indisponible</button>
+            <button onclick="AllArticleNotLoc()"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">tout les article pas louer</button>
+        </div>
+        <div class="card"></div>
+
+
+     </main>
+    
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://kit.fontawesome.com/27b15f5b77.js" crossorigin="anonymous"></script>
+<script src="panelAdmin.js"></script>
+</html>

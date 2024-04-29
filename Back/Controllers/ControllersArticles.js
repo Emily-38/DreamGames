@@ -77,21 +77,23 @@ const ctrlCreateArticle = async (req, res) => {
     } else {
     try {
         const{title,description,category,quantity,quantityMax,prix,image}= req.body
+        console.log(req.body)
        let data=[]
        
-if(!title||!description||!category||!quantity|| !quantityMax||!prix ||!image){
+if(!title||!description||!category||!quantity|| !quantityMax||!prix){
     res.json({message: "les champs ne sont pas remplis"})
 }else{
-     data.push(`"${title}","${description}","${category}","${quantity}","${quantityMax}","${prix}","${image}"`);
+     data.push(`"${title}","${description}","${category}","${quantity}","${quantityMax}","${prix}"`);
 
-        const sql = `INSERT INTO articles (title,description, category, quantity , quantityMax, prix, image)
+        const sql = `INSERT INTO articles (title,description, category, quantity , quantityMax, prix)
                     VALUES (${data})`;
            
      const[rows]=await pool.execute(sql);
-      res.json(rows);
+      res.json({message: "tout est bon"});
     }
     } catch (err) {
       console.log(err.stack);
+      res.json({message: "ce nest pas bon"})
     }
     }
 
@@ -108,7 +110,7 @@ try{
 }
 }
 
-//affiche les clients par id
+//affiche les articles par id
 const ctrlReadArticleById = async (req, res) => {
   try{
     const id =req.params.id
@@ -171,7 +173,15 @@ const ctrlDelete= async (req,res)=>{
 })
 }
 
+const ctrlReadArticleNotLoc = async (req, res) => {
+  try{
+      const [rows, fields] = await pool.execute(`SELECT * FROM articles LEFT JOIN location ON location.article_id = articles.id WHERE location.article_id IS NULL`)
+      res.json(rows);
+  } catch (err) {
+    console.log(err.stack);
+  }
+  }
   
 
 
-  module.exports={insertArticlePicture ,ctrlCreateArticle,ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById}
+  module.exports={insertArticlePicture ,ctrlCreateArticle,ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById, ctrlReadArticleNotLoc}

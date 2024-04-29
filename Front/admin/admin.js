@@ -21,7 +21,7 @@ async function getAllArticles() {
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
-        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}</p>`}
+        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
         
         <p>${article.prix}€</p>
         </div>
@@ -73,7 +73,7 @@ async function Consoles() {
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
-        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}</p>`}
+        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
         
         <p>${article.prix}€</p>
         </div>
@@ -99,7 +99,7 @@ async function Accessoire() {
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
-        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}</p>`}
+        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
         
         <p>${article.prix}€</p>
         </div>
@@ -123,7 +123,7 @@ async function JeuxVideo(){
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
-        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}</p>`}
+        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
         
         <p>${article.prix}€</p>
         </div>

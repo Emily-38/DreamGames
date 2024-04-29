@@ -12,7 +12,7 @@ const quantity= document.querySelector('#quantity')
 const category= document.querySelector('#category')
 const quantityMax= document.querySelector('#quantityMax')
 const prix= document.querySelector('#prix')
-const image= document.querySelector('#image')
+
 
 
     title.value=response[0].title
@@ -21,7 +21,7 @@ const image= document.querySelector('#image')
    category.value =response[0].category
    quantityMax.value =response[0].quantityMax
    prix.value= response[0].prix
-   image.value =response[0].image
+  
 
 }
 AfficherArticleById()
@@ -30,7 +30,7 @@ async function ModifierArticle(){
     const jwt= localStorage.getItem('jwt')
     let title= document.querySelector('#title').value
     let description= document.querySelector('#description').value
-    let image= document.querySelector('#image').value
+  
     let quantity= document.querySelector('#quantity').value
     let quantityMax= document.querySelector('#quantityMax').value
     let category=document.querySelector('#category').value
@@ -42,7 +42,7 @@ if(!jwt){
     let article = {
         title: title,
         description: description,
-        image: image,
+        
         category: category,
         quantity: quantity,
         quantityMax: quantityMax,
