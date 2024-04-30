@@ -182,6 +182,18 @@ const ctrlReadArticleNotLoc = async (req, res) => {
   }
   }
   
+  const ctrlSearchByName= async(req, res)=>{
+    const title=req.params.name
+    try{
+      
+      const sql =`SELECT * FROM articles WHERE title LIKE '%${title}%' `
+     
+      const [rows] = await pool.execute(sql);
+      res.json(rows)
+    }catch(err){
+      console.log(err)
+    }
+  }
 
 
-  module.exports={insertArticlePicture ,ctrlCreateArticle,ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById, ctrlReadArticleNotLoc}
+  module.exports={insertArticlePicture ,ctrlCreateArticle,ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById, ctrlReadArticleNotLoc, ctrlSearchByName}

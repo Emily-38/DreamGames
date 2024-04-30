@@ -17,7 +17,7 @@ async function getAllArticles() {
         if(article.quantity===0){
 
         }else{
-        card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+        card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -60,7 +60,7 @@ async function AddArticle(id){
     
     Locresponse.forEach(loc => {
         if(loc.status ==="a valider"){
-      modale.innerHTML+=`<div class="bg-gray-100 m-2"><p>${loc.title}</p><p>${loc.category}</p>
+      modale.innerHTML+=`<div class="text-center bg-gray-100 m-2"><p>${loc.title}</p><p>${loc.category}</p>
       <p>${loc.prix}€</p></div>
       <button class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="valider('${loc.id}')">Valider</button>
       <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="deleteLoc(${loc.id})">Supprimer</button>`
@@ -102,7 +102,7 @@ async function Consoles() {
             if(article.quantity===0){
 
             }else{
-            card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+            card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
             <img src="../../Back/uploads/${article.image}">
@@ -127,7 +127,7 @@ async function Accessoire() {
             if(article.quantity===0){
 
             }else{
-            card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+            card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
             <img src="../../Back/uploads/${article.image}">
@@ -152,7 +152,7 @@ async function JeuxVideo() {
             if(article.quantity===0){
 
             }else{
-            card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+            card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
             <img src="../../Back/uploads/${article.image}">

@@ -68,6 +68,10 @@ console.log("debut de la fonction")
       }
     }
     )
+    async function logOut(){
+      localStorage.clear()
+      window.location.href="../../Acceuil/acceuil.html"
+  }
 
     
 

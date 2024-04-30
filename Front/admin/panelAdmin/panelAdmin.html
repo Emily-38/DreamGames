@@ -6,11 +6,11 @@
     <title>Panel admin</title>
 </head>
 <body>
-    <header class="flex flex-row justify-between items-center m-2">
-        <a href="../admin.html"> <img src="../../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12"></a>
-         <div>
-             <a href="../admin.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Home</a>
-             <a href="./create/create.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping m-2"></i>Crée un produit</a>
+    <header class="flex flex-col justify-center items-center m-2 md:flex-row justify-between">
+        <a href="../admin.html"> <img src="../../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-1/3"></a>
+         <div class="flex flex-col md:flex-row">
+             <a href="../admin.html" class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Home</a>
+             <a href="../create/create.html" class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping m-2"></i>Crée un produit</a>
              <button onclick="logOut()" class="bg-red-500 m-2 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>
          </div>
      </header>
@@ -22,7 +22,7 @@
             <button onclick="AllArticle()"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">tout les article indisponible</button>
             <button onclick="AllArticleNotLoc()"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2">tout les article pas louer</button>
         </div>
-        <div class="card"></div>
+        <div class="card flex flex-col flex-wrap md:flex-row"></div>
 
 
      </main>

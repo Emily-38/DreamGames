@@ -1,5 +1,5 @@
 const express = require("express");
-const { ctrlCreateArticle, ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById, insertArticlePicture, ctrlReadArticleNotLoc } = require("../../Controllers/ControllersArticles");
+const { ctrlCreateArticle, ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArticleById, insertArticlePicture, ctrlReadArticleNotLoc, ctrlSearchByName } = require("../../Controllers/ControllersArticles");
 
 
 
@@ -11,4 +11,5 @@ router.get('/Article/:id', ctrlReadArticleById)
 router.patch('/UpdateArticle/:id', ctrlUpdate)
 router.delete('/delete/:id', ctrlDelete)
 router.get("/allArticleNotLoc",ctrlReadArticleNotLoc)
+router.get('/SearchByName/:name', ctrlSearchByName)
 module.exports = router

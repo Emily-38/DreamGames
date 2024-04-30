@@ -14,7 +14,7 @@ async function getAllArticles() {
     response.forEach(article => {
        
         card.innerHTML +=`
-        <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2 ">
+        <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5 ">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -66,7 +66,7 @@ async function Consoles() {
         if(article.category==="console"){
        
         card.innerHTML +=`
-        <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+        <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -92,7 +92,7 @@ async function Accessoire() {
         if(article.category==="Accessoires"){
        
         card.innerHTML +=`
-        <div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+        <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -116,7 +116,7 @@ async function JeuxVideo(){
     card.innerHTML=""
     response.forEach(article => {
         if(article.category==="jeux_video"){
-        card.innerHTML +=`<div class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md p-2">
+        card.innerHTML +=`<div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
         <img src="../../Back/uploads/${article.image}">
@@ -132,6 +132,34 @@ async function JeuxVideo(){
         <div>`
         }
     });
+}
+async function searchByTitle(){
+    const title= document.querySelector('#title').value
+   
+
+    let apiCall = await fetch(`http://localhost:3444/SearchByName/${title}`)
+
+    let response = await apiCall.json()
+
+    console.log(response)
+    card.innerHTML=""
+    response.forEach(article => {
+        card.innerHTML +=`<div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
+        
+        <p class="font-bold">${article.title}</p>
+        <img src="../../Back/uploads/${article.image}">
+        <p>${article.description}</p>
+        <p>${article.category} </p>
+        <div class="flex flex-row justify-between">
+        ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
+        
+        <p>${article.prix}€</p>
+        </div>
+        <button class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="ModifierArticle('${article.id}')">Modifier<button>
+        <button class="bg-red-500 m-2 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="DeleteArticle('${article.id}')">Supprimer<button>
+        <div>`
+    
+    })
 }
 async function logOut(){
     localStorage.clear()

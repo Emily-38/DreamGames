@@ -31,3 +31,7 @@ async function updateLoc(){
                 window.location.reload()
             }
 }
+async function logOut(){
+    localStorage.clear()
+    window.location.href="../Acceuil/acceuil.html"
+}

@@ -6,12 +6,12 @@
     <title>Home</title>
 </head>
 <body>
-    <header class="flex flex-row justify-between items-center m-2">
+    <header class="flex flex-col justify-center items-center m-2 md:flex-row justify-between">
         <img src="../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12">
-        <div>
-            <a href="./Profile/Profile.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
-            <button onclick="panier()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping mr-2"></i>Panier</button>
-            <button onclick="logOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>
+        <div class="flex flex-col md:flex-row">
+            <a href="./Profile/Profile.html" class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
+            <button onclick="panier()" class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping mr-2"></i>Panier</button>
+            <button onclick="logOut()" class="bg-red-500 m-2hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>
         </div>
     </header>
     <main>
@@ -20,19 +20,19 @@
         </div>
         <div class="article bg-gray-100 m-2">
             <p class="font-bold text-center">Recherche par categories</p>
-        <div class="flex flex-row justify-around">
-            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Consoles()">
+        <div class="flex flex-col justify-around md:flex-row">
+            <button class="bg-gray-200 rounded text-center m-3 shadow-md md:w-1/5"" onclick="Consoles()">
             
                 <img src="../media/consoles.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
                 <p class="font-bold">Consoles</p>
             
             </button>
-            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="Accessoire()" >
+            <button class="bg-gray-200 rounded text-center m-3 shadow-md md:w-1/5"" onclick="Accessoire()" >
                 <img src="../media/manettes.avif" alt="consoles" class="w-32 h-40 container mx-auto m-2">
                 <p class="font-bold">Accessoires</p>
             </button>
             
-            <button class="w-1/5 bg-gray-200 rounded text-center m-3 shadow-md" onclick="JeuxVideo()" >
+            <button class="bg-gray-200 rounded text-center m-3 shadow-md md:w-1/5"" onclick="JeuxVideo()" >
                 <img src="../media/jeu.avif" alt="consoles" class="w-32 h-40 container mx-auto  m-2">
                 <p class="font-bold">Jeux video</p>
             </button>

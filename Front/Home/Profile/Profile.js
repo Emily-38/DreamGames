@@ -86,29 +86,8 @@ localStorage.setItem('article',id)
         window.location.reload() 
       
   }
-
-//   <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="deleteLocAddQuantity(${loc.id})">Supprimer</button>
-// async function deleteLocAddQuantity(id){
-// let request = {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-type': 'application/json; charset=utf-8',
-//       Authorization: `Bearer ${jwt}`,
-//   },
-// }
-// let Location = await fetch(`http://localhost:3444/addArticle/${id}`, request)
-// let request1 = {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-type': 'application/json; charset=utf-8',
-//       Authorization: `Bearer ${jwt}`,
-//   },
-// }
-// let deleteLocation = await fetch(`http://localhost:3444/supprLoc/${id}`, request1)
-// let responsedelete = await deleteLocation.json()
-//         window.location.reload() 
-//     return
-// }
-    
-
+  async function logOut(){
+    localStorage.clear()
+    window.location.href="../../Acceuil/acceuil.html"
+}
 

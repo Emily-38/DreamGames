@@ -101,7 +101,7 @@ async function supprimerLocAddQuantity(id){
         }
         let deleteLocation = await fetch(`http://localhost:3444/supprLoc/${id}`, request1)
         
-                // window.location.reload() 
+                 window.location.reload() 
             return
         }
 
@@ -153,9 +153,9 @@ card.innerHTML=""
     response.forEach(article => {
 card.innerHTML+=`
  
-<div class="flex flex-rows justify-between flex-wrap  bg-gray-300 rounded text-center m-3 shadow-md p-2">
-    <div class="w-1/5 text-center ">
-      <p>titre: ${article.title}</p>
+<div class="  bg-gray-300 rounded text-center m-3 shadow-md p-2 md:w-1/5">
+    <div class=" text-center ">
+      <p class='font-bold'> ${article.title}</p>
       <img src="../../../Back/uploads/${article.image}"
       <p>description: ${article.description}</p>
       <p>category: ${article.category}</p>
