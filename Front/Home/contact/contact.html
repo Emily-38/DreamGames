@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+    <header class="flex flex-col justify-center items-center m-2 md:flex-row justify-between">
+        <img src="../../media/Black_and_Purple_Gaming_Avatar_Logo-removebg-preview.png" alt="DreamGames" class="w-2/12">
+        <div class="flex flex-col md:flex-row">
+            <a href="./Profile/Profile.html" class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-user m-2"></i>Profile</a>
+            <button onclick="panier()" class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><i class="fa-solid fa-cart-shopping mr-2"></i>Panier</button>
+            <button onclick="logOut()" class="bg-red-500 m-2 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Déconnexion </button>  
+        </div>
+    </header>
+<main>
+    <div class="container mx-auto w-full max-w-xs">
+        <div class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <p class="text-center text-gray-700 text-sm font-bold mb-2">Envoyer un message</p>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="objet">
+             Objet
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="objet" type="text" placeholder="">
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+            message
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" type="textarea" placeholder="">
+          </div>
+          <div class="flex items-center justify-center">
+            <button id="mail" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "  >
+              Envoyer
+            </button>
+          </div>
+        </div>
+      </div>
+</main> 
+</body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/27b15f5b77.js" crossorigin="anonymous"></script>
+    <script type="modale" src="contact.js"></script>
+</html>

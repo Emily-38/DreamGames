@@ -156,7 +156,7 @@ card.innerHTML+=`
 <div class="  bg-gray-300 rounded text-center m-3 shadow-md p-2 md:w-1/5">
     <div class=" text-center ">
       <p class='font-bold'> ${article.title}</p>
-      <img src="../../../Back/uploads/${article.image}"
+      <img src="http://localhost:3444/${article.link}">
       <p>description: ${article.description}</p>
       <p>category: ${article.category}</p>
       <p> quantité: ${article.quantity}</p>

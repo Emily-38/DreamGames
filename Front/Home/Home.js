@@ -20,7 +20,7 @@ async function getAllArticles() {
         card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
@@ -105,7 +105,7 @@ async function Consoles() {
             card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
-            <img src="../../Back/uploads/${article.image}">
+            <img src="http://localhost:3444/${article.link}">
             <p>${article.description}</p>
             <p>${article.category} </p>
             <div class="flex flex-row justify-between">
@@ -130,7 +130,7 @@ async function Accessoire() {
             card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
-            <img src="../../Back/uploads/${article.image}">
+            <img src="http://localhost:3444/${article.link}">
             <p>${article.description}</p>
             <p>${article.category} </p>
             <div class="flex flex-row justify-between">
@@ -155,7 +155,7 @@ async function JeuxVideo() {
             card.innerHTML +=`<div class="bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
             
             <p class="font-bold">${article.title}</p>
-            <img src="../../Back/uploads/${article.image}">
+            <img src="http://localhost:3444/${article.link}">
             <p>${article.description}</p>
             <p>${article.category} </p>
             <div class="flex flex-row justify-between">

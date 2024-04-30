@@ -17,12 +17,11 @@ async function getAllArticles() {
         <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5 ">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
         ${article.quantity === 0 ?`<p class="text-red-600"> Indisponible</p>`: `<p> disponible : ${article.quantity}/${article.quantityMax}</p>`}
-        
         <p>${article.prix}€</p>
         </div>
         <button class="bg-green-500 m-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="ModifierArticle('${article.id}')">Modifier<button>
@@ -69,7 +68,7 @@ async function Consoles() {
         <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
@@ -95,7 +94,7 @@ async function Accessoire() {
         <div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
@@ -119,7 +118,7 @@ async function JeuxVideo(){
         card.innerHTML +=`<div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">
@@ -141,13 +140,14 @@ async function searchByTitle(){
 
     let response = await apiCall.json()
 
-    console.log(response)
+    
     card.innerHTML=""
     response.forEach(article => {
+        console.log(article)
         card.innerHTML +=`<div class=" bg-gray-200 rounded text-center m-3 shadow-md p-2 md:w-1/5">
         
         <p class="font-bold">${article.title}</p>
-        <img src="../../Back/uploads/${article.image}">
+        <img src="http://localhost:3444/${article.link}">
         <p>${article.description}</p>
         <p>${article.category} </p>
         <div class="flex flex-row justify-between">

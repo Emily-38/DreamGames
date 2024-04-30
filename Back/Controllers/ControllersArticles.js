@@ -8,7 +8,7 @@ const express = require('express')
 const path = require('path')
 const multer = require('multer')
 const app = express()
-const uploadDirectory = path.join(__dirname, '../uploads')
+const uploadDirectory = path.join(__dirname, '../public/uploads')
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
@@ -76,16 +76,16 @@ const ctrlCreateArticle = async (req, res) => {
         return
     } else {
     try {
-        const{title,description,category,quantity,quantityMax,prix}= req.body
+        const{title,description,category,quantity,quantityMax,prix,image}= req.body
         
        let data=[]
        
 if(!title||!description||!category||!quantity|| !quantityMax||!prix){
     res.json({message: "les champs ne sont pas remplis"})
 }else{
-     data.push(`"${title}","${description}","${category}","${quantity}","${quantityMax}","${prix}"`);
+     data.push(`"${title}","${description}","${category}","${quantity}","${quantityMax}","${prix}","${image}"`);
 
-        const sql = `INSERT INTO articles (title,description, category, quantity , quantityMax, prix)
+        const sql = `INSERT INTO articles (title,description, category, quantity , quantityMax, prix, image)
                     VALUES (${data})`;
            
      const[rows]=await pool.execute(sql);
@@ -103,7 +103,7 @@ if(!title||!description||!category||!quantity|| !quantityMax||!prix){
   //afficher tout les articles
   const ctrlReadArticle = async (req, res) => {
 try{
-    const [rows, fields] = await pool.execute("SELECT* FROM articles ")
+    const [rows, fields] = await pool.execute("SELECT*, CONCAT('/uploads/', image) as link FROM articles ")
     res.json(rows);
 } catch (err) {
   console.log(err.stack);
@@ -192,7 +192,7 @@ const ctrlReadArticleNotLoc = async (req, res) => {
     const title=req.params.name
     try{
       
-      const sql =`SELECT * FROM articles WHERE title LIKE '%${title}%' `
+      const sql =`SELECT *, CONCAT('/uploads/', image) as link FROM articles WHERE title LIKE '%${title}%' `
      
       const [rows] = await pool.execute(sql);
       res.json(rows)

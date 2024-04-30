@@ -31,7 +31,7 @@ async function getAllProfile() {
         <p>Email</p>
         <p>${user.email}</p>
         </div>
-        
+        <button class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modifier le mots de passe</button>
         </div>
         `
     })
