@@ -3,13 +3,14 @@ const { ctrlCreateArticle, ctrlReadArticle, ctrlUpdate, ctrlDelete, ctrlReadArti
 
 
 
+
 const router = express.Router();
 router.post('/insert/picture', insertArticlePicture)
 router.post('/createArticle', ctrlCreateArticle)
 router.get('/Article', ctrlReadArticle)
-router.get('/Article/:id', ctrlReadArticleById)
-router.patch('/UpdateArticle/:id', ctrlUpdate)
-router.delete('/delete/:id', ctrlDelete)
+router.get('/Article/:id',ctrlReadArticleById)
+router.patch('/UpdateArticle/:id',ctrlUpdate)
+router.delete('/delete/:id',ctrlDelete)
 router.get("/allArticleNotLoc",ctrlReadArticleNotLoc)
 router.get('/SearchByName/:name', ctrlSearchByName)
 module.exports = router

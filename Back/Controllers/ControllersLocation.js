@@ -81,7 +81,8 @@ const ctrlReadArticleByIdUser = async (req, res) => {
       } else {
       try{
         const id= req.params.id
-          const{date_start,date_end }= req.body
+          const date_start= req.date_start
+          const date_end= req.date_end
           const sql =`UPDATE location
           JOIN articles ON articles.id = location.article_id
           SET location.date_start = ?,

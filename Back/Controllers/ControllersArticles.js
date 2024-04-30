@@ -76,8 +76,8 @@ const ctrlCreateArticle = async (req, res) => {
         return
     } else {
     try {
-        const{title,description,category,quantity,quantityMax,prix,image}= req.body
-        console.log(req.body)
+        const{title,description,category,quantity,quantityMax,prix}= req.body
+        
        let data=[]
        
 if(!title||!description||!category||!quantity|| !quantityMax||!prix){
@@ -136,12 +136,18 @@ const ctrlUpdate= async (req,res)=>{
     try{
 
         const id= req.params.id
-        const{title, description, category, quantity, quantityMax, prix }= req.body
+        const{title, description, category,quantity ,quantityMax , prix}= req.body
+         
+         
+       
+
         const sql =`UPDATE articles SET title=?, description=?, category=?, quantity=?, quantityMax=?, prix=? WHERE id="${id}" `
         const values = [title,description,category,quantity,quantityMax, prix];
+        ;
         const [rows] = await pool.execute(sql, values);
-        console.log(rows);
+        
         res.json(rows);
+        console.log(values)
    } catch (err) {
         console.log(err.stack);
       }
