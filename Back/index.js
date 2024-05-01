@@ -5,6 +5,7 @@ const cors = require('cors')
 const routerUser = require('./routes/routeUser/routeUser')
 const routerArticle = require('./routes/routeArticle/routeArticle')
 const routerLocation = require('./routes/routeLocation/routeLocation')
+const routerMailer = require('./routes/routeMailer/routeMailer')
 
 require('dotenv').config()
 
@@ -17,6 +18,7 @@ const PORT = 3444;
 app.use("/", routerUser);
 app.use("/", routerArticle);
 app.use("/",routerLocation)
+app.use("/",routerMailer)
 
 app.listen(PORT, () => {
   console.log("im listening on port", PORT);

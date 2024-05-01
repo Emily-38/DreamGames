@@ -9,4 +9,6 @@ router.post("/login", middlEmail , login)
 router.get("/profile", profile)
 router.get("/allUser",AllUser)
 
+
+
 module.exports = router

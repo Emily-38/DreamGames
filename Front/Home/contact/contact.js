@@ -1,10 +1,10 @@
-import transporter from "../../../Back/utils/nodemailer"
+
 
 const jwt=localStorage.getItem('jwt')
-const mail= document.querySelector('#mail')
 
 
-mail.addEventListener('click', async function (){
+
+ async function main (){
 const objet =document.querySelector('#objet').value
 const message=document.querySelector('#message').value
     let request = {
@@ -28,5 +28,6 @@ const message=document.querySelector('#message').value
   
     console.log("Message sent: %s", info.messageId);
     alert('message envoyer')
-  })
+  }
+
   
