@@ -31,7 +31,7 @@ async function getAllProfile() {
         <p>Email</p>
         <p>${user.email}</p>
         </div>
-        <button class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modifier le mots de passe</button>
+        <button onclick="envoyer()" class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modifier le mots de passe</button>
         </div>
         `
     })
@@ -89,5 +89,21 @@ localStorage.setItem('article',id)
   async function logOut(){
     localStorage.clear()
     window.location.href="../../Acceuil/acceuil.html"
+}
+async function envoyer(){
+
+  let request = {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${jwt}`,
+  },
+}
+  const apiCall= await fetch('http://localhost:3444/mailerpassword', request)
+ const response= await apiCall.json()
+
+  
+    alert('email pour changer votre mot de passe a ete envoyer')
+  
 }
 

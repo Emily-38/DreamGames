@@ -9,19 +9,23 @@ require('dotenv').config()
 const ctrlCreateUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        
         const{firstname,lastname,address}= req.body
         const email= req.email
        let data=[]
-       
+
+       let activationToken = await bcrypt.hash(email, 10)
+       let cleanToken=activationToken.replace('/','')
+
 if(!email||!firstname||!lastname||!hashedPassword||!address){
     res.json({message: "les champs ne sont pas remplis"})
 }else{
-     data.push(`"${email}","${firstname}","${lastname}","${hashedPassword}","${address}"`);
+     data.push(`"${email}","${firstname}","${lastname}","${hashedPassword}","${address}","${cleanToken}"`);
 
     
 
 
-        const sql = `INSERT INTO users (email,first_name, last_name, password,address)
+        const sql = `INSERT INTO users (email,first_name, last_name, password,address,token)
                     VALUES (${data})`;
 
                     
@@ -119,4 +123,38 @@ const AllUser = async (req, res)=>{
 })
 }
 
-  module.exports={ctrlCreateUser, login, profile, AllUser}
+
+const updatemdp=async (req,res) => {
+  const token = await extractToken(req)
+  jwt.verify( 
+    token,
+  process.env.SECRET_KEY,
+  async (err, authData) => {
+      if (err) {
+
+        console.log(err)
+        res.status(401).json({ err: 'Unauthorized' })
+        return
+    } else {
+
+  try{
+ 
+ const password=req.body.password
+ if(!password){
+  res.json({message: "les champs ne sont pas remplis"})
+ }
+
+ const hashedPassword = await bcrypt.hash(password, 10)
+const values=[hashedPassword]
+ const sql= `UPDATE users SET password=? WHERE id=${authData.id}`
+ const [rows] = await pool.execute(sql, values)
+
+ res.json(rows);
+ 
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+  })
+}
+  module.exports={ctrlCreateUser, login, profile, AllUser, updatemdp}

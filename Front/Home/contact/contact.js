@@ -1,33 +1,34 @@
 
-
 const jwt=localStorage.getItem('jwt')
 
+ async function mailer() {
+const sujet =document.querySelector('#sujet').value
+const corps=document.querySelector('#corps').value
 
+let message = {
+    sujet: sujet,
+    corps: corps
+}
 
- async function main (){
-const objet =document.querySelector('#objet').value
-const message=document.querySelector('#message').value
     let request = {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-type': 'application/json; charset=utf-8',
           Authorization: `Bearer ${jwt}`,
       },
+      body: JSON.stringify(message),
     }
-    let apiCall = await fetch('http://localhost:3444/profile',request)
+
+    let apiCall = await fetch('http://localhost:3444/mailer', request)
     let response = await apiCall.json()
     console.log(response)
     
-    const info = await transporter.sendMail({
-      from: `"message de bonne reception", <contact@contact.fr>`, 
-      to: `${response.email}`, 
-      subject: `${objet}`, 
-      text: `Bonjour, nous avons bien recu votre message suivant : ${message} `, 
-      html: "<b>Hello world?</b>", 
-    });
-  
-    console.log("Message sent: %s", info.messageId);
     alert('message envoyer')
   }
+
+  async function logOut(){
+    localStorage.clear()
+    window.location.href="../../Acceuil/acceuil.html"
+}
 
   

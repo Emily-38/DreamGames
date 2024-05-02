@@ -181,7 +181,7 @@ const ctrlDelete= async (req,res)=>{
 
 const ctrlReadArticleNotLoc = async (req, res) => {
   try{
-      const [rows, fields] = await pool.execute(`SELECT * FROM articles LEFT JOIN location ON location.article_id = articles.id WHERE location.article_id IS NULL`)
+      const [rows, fields] = await pool.execute(`SELECT *,CONCAT('/uploads/', articles.image) as link FROM articles LEFT JOIN location ON location.article_id = articles.id WHERE location.article_id IS NULL`)
       res.json(rows);
   } catch (err) {
     console.log(err.stack);
