@@ -1,14 +1,16 @@
 Description: ce ci et une page web de gestion de location les client peuvent louer un materiel et les admin peuvent gerer toute les locations
 
 
-ou toruver les document:
+ou trouver les document:
 les documents qui se trouve dans un fichier ignore :
     -  image de l'organisation de la bdd
     -   bdd en format sql 
 pour l'oragnisation de travail vous pouvez le trouver dans projet sur le github 
+[cliquez ici](https://github.com/users/Emily-38/projects/3/views/1?layout=board).
 
 
-comment l'installer 
+comment l'installer :
+
 cloner le projet avec github 
 faire un npm i  pour installer les dependances
 crée une base de donnée sur php my admin il faut aussi crée les table qui vont avec et faire un fichier de connexion
