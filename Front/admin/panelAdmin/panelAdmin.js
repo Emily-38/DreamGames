@@ -79,7 +79,7 @@ async function supprimerLoc(id){
   }
 async function modifierLoc(id){
     localStorage.setItem('article',id)
-    window.location.href="../../Home/valider/valider.html"
+    window.location.href="./updateloc/updateloc.html"
   }
 async function supprimerLocAddQuantity(id){
     console.log(id)

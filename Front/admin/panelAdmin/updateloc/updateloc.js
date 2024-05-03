@@ -21,19 +21,11 @@ async function updateLoc(){
             body: JSON.stringify(location),
         }
     
-            const locUpdate= await fetch(`http://localhost:3444/validerLocation/${id}`, request)
+            const locUpdate= await fetch(`http://localhost:3444/updateLoc/${id}`, request)
             const response= await locUpdate.json()
-            
-           if(locUpdate.status === 200){
-
             localStorage.removeItem('article')
-            if(response.role=== 'admin'){
-                window.location.href = '../../admin/admin.html'
-            }else{
-                 window.location.href = '../Home.html' }
-            }else{
-                window.location.reload()
-            }
+                window.location.href = '../../admin.html'
+           
 }
 async function logOut(){
     localStorage.clear()

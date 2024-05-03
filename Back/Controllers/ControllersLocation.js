@@ -93,7 +93,40 @@ const ctrlReadArticleByIdUser = async (req, res) => {
           const values = [date_start,date_end];
           const [rows] = await pool.execute(sql, values);
           
-          res.json(rows);
+          res.json({rows, role:authData.role});
+          
+     } catch (err) {
+          console.log(err.stack);
+        }
+      }
+    })
+  }
+  const ctrlLocUpdateNotsupprArticle= async (req,res)=>{
+    const token = await extractToken(req)
+    jwt.verify( 
+      token,
+    process.env.SECRET_KEY,
+    async (err, authData) => {
+        if (err) {
+  
+          console.log(err)
+          res.status(401).json({ err: 'Unauthorized' })
+          return
+      } else {
+      try{
+        const id= req.params.id
+          const date_start= req.date_start
+          const date_end= req.date_end
+          const sql =`UPDATE location
+          JOIN articles ON articles.id = location.article_id
+          SET location.date_start = ?,
+              location.date_end = ?,
+              location.status = 'en cours'
+          WHERE location.id=${id}; `
+          const values = [date_start,date_end];
+          const [rows] = await pool.execute(sql, values);
+          
+          res.json({rows, role:authData.role});
           
      } catch (err) {
           console.log(err.stack);
@@ -179,4 +212,4 @@ const ctrlReadArticleByIdUser = async (req, res) => {
     )
  }
   
-    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlLocUpdate, ctrlLocDelete,ctrlLocAddArticle, ctrlReadAllLoc}
+    module.exports={ ctrlAddLocation, ctrlReadArticleByIdUser,ctrlLocUpdate, ctrlLocDelete,ctrlLocAddArticle, ctrlReadAllLoc,ctrlLocUpdateNotsupprArticle}
